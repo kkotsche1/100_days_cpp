@@ -1,3 +1,5 @@
+// The h files contains declarations for the functions included in the cpp file with the same name that contains the implementation
+
 #include <iostream>
 
 int add(int, int);
