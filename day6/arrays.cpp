@@ -14,5 +14,19 @@ int main()
         std::cout << myarray[i] << std::endl;
     }
 
+    // If we need to define an int array with pre-determined values we can do it as follows, if we provide less
+    // than 20 values the rest will be filled with 0's:
+    int mycustomarray[20] = {17, 29, 32};
+
+    for (int i = 0; i < 20; i++)
+    {
+        std::cout << mycustomarray[i] << std::endl;
+    }
+
+    // Defining the 5th item of the empty array
+    mycustomarray[4] = 235;
+
+    std::cout << mycustomarray[4] << std::endl;
+
     return 0;
 }
