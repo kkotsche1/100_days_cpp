@@ -3,24 +3,33 @@
 #include <iomanip>
 #include "globals.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-
-    // Asking the user to enter the principal amount of their loan
-    std::cout << "Please enter a numeric value for the principal amount of your loan" << std::endl;
     double principal = 0.0; // When we declare our new variable we assign it some value to reduce error likelihood
-    std::cin >> principal;
-
-    // Askin the user for the interest rate of the loan
-    std::cout << "Please enter the interest rate as a decimal using '.'" << std::endl;
     double interest = 0.0;
-    std::cin >> interest;
-
-    // Asking the user for the loan duration
-    std::cout << "Please enter the number of years the loan will be running for" << std::endl;
     int loanYears = 0;
-    std::cin >> loanYears;
 
+    if (argc == 1)
+    {
+        // Asking the user to enter the principal amount of their loan
+        std::cout << "Please enter a numeric value for the principal amount of your loan" << std::endl;
+        std::cin >> principal;
+
+        // Askin the user for the interest rate of the loan
+        std::cout << "Please enter the interest rate as a decimal using '.'" << std::endl;
+        std::cin >> interest;
+
+        // Asking the user for the loan duration
+        std::cout << "Please enter the number of years the loan will be running for" << std::endl;
+        std::cin >> loanYears;
+    }
+    else
+    {
+        // Getting the Principal, Interest and LoanYears from Commandline Inputs
+        principal = atof(argv[1]);
+        interest = atof(argv[2]);
+        loanYears = atoi(argv[3]);
+    }
     // Here we are using the global denoted by the leading g which we imported from globals.h with the #include "globals.h" statement
     double monthlyInterest = interest / gMonthsInYear;
     long monthsOfLoan = loanYears * gMonthsInYear;
