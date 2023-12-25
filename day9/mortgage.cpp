@@ -47,15 +47,23 @@ int main()
     while (currentLoanMonth <= monthsOfLoan)
     {
 
+        // Calculating the interest payment
         currInterestPayment = currBalance * monthlyInterest;
+        // Adding calculated interest payment to our total interest paid counter
         totalInterestPaid = totalInterestPaid + currInterestPayment;
+        // Substracting interest portion from our monhtly payment to calculate principal payment
         currPrincipalPayment = monthlyPayment - currInterestPayment;
+        // Subtracting principal payment from our principal balance
         currBalance = currBalance - currPrincipalPayment;
+
+        // Informing the user over the current months payment details
         std::cout << "Month Number: " << currentLoanMonth << "      "
                   << "Interest Payment: " << currInterestPayment << "   Principal Payment: " << currPrincipalPayment << "   Remaining Balance: " << currBalance << std::endl;
+        // Increasing our month counter by one
         currentLoanMonth++;
     }
 
+    // Informing the user of the total amount of interest paid for this loan
     std::cout << "Total amount of interes paid: " << totalInterestPaid << std::endl;
 
     return 0;
