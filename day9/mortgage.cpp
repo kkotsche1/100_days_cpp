@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-
-#define MONTHS_IN_YEAR 12
+#include "globals.h"
 
 int main()
 {
@@ -22,8 +21,8 @@ int main()
     int loanYears = 0;
     std::cin >> loanYears;
 
-    double monthlyInterest = interest / MONTHS_IN_YEAR;
-    long monthsOfLoan = loanYears * MONTHS_IN_YEAR;
+    double monthlyInterest = interest / gMonthsInYear;
+    long monthsOfLoan = loanYears * gMonthsInYear;
 
     // Initializing a variable to calculate our monthly payment
     double monthlyPayment = 0.0;
