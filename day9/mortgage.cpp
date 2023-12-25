@@ -10,6 +10,17 @@ enum AmortizeProgram
     YEARS_OF_LOAN = 3,
 };
 
+enum AmortEnum
+{
+    YR_OUT = 2,
+    MN_OUT = 2,
+    CUM_MN_OUT = 5,
+    PAYMENT_OUT = 12,
+    INTEREST_OUT = 12,
+    PRINCIPAL_OUT = 12,
+    BALANCE_OUT = 16
+};
+
 int main(int argc, char *argv[])
 {
     double principal = 0.0; // When we declare our new variable we assign it some value to reduce error likelihood
@@ -59,10 +70,22 @@ int main(int argc, char *argv[])
     // Initializing a variable which we will use to loop through all of the payment months
     long currentLoanMonth = 1;
 
+    gAmortizeMonth amortMonth;
+    amortMonth.year = 1;
+    amortMonth.yearMonth = 1;
+
+    // Printing out a header row
+    std::cout << std::setw(YR_OUT) << "Yr/Mth"
+              << " " << std::setw(CUM_MN_OUT) << "Tot. Months"
+              << " " << std::setw(PAYMENT_OUT) << "Amount Paid"
+              << " " << std::setw(INTEREST_OUT) << "Interest Pymt"
+              << " " << std::setw(PRINCIPAL_OUT) << "Principal Pymt"
+              << " " << std::setw(BALANCE_OUT) << "Balance" << std::endl;
+    std::cout << "" << std::endl;
+
     // Looping through our payment months
     while (currentLoanMonth <= monthsOfLoan)
     {
-        gAmortizeMonth amortMonth;
 
         // Calculating the interest payment
         currInterestPayment = currBalance * monthlyInterest;
@@ -71,7 +94,7 @@ int main(int argc, char *argv[])
         // Substracting interest portion from our monhtly payment to calculate principal payment
         currPrincipalPayment = monthlyPayment - currInterestPayment;
         // Subtracting principal payment from our principal balance
-        currBalance = currBalance - currPrincipalPayment;
+        currBalance = abs(currBalance - currPrincipalPayment);
 
         amortMonth.loanMonth = currentLoanMonth;
         amortMonth.payment = monthlyPayment;
@@ -80,10 +103,16 @@ int main(int argc, char *argv[])
         amortMonth.pureInterest = currInterestPayment;
 
         // Informing the user over the current months payment details
-        std::cout << "Month Number: " << amortMonth.loanMonth << "      "
-                  << "Interest Payment: " << amortMonth.pureInterest << "   Principal Payment: " << amortMonth.paidDownPrincipal << "   Remaining Balance: " << amortMonth.principalBalance << std::endl;
+        std::cout << std::setw(YR_OUT) << amortMonth.year << " " << std::setw(MN_OUT) << amortMonth.yearMonth << " " << std::setw(CUM_MN_OUT) << amortMonth.loanMonth << " " << std::setw(PAYMENT_OUT) << amortMonth.payment << " " << std::setw(INTEREST_OUT) << amortMonth.pureInterest << " " << std::setw(PRINCIPAL_OUT) << amortMonth.paidDownPrincipal << " " << std::setw(BALANCE_OUT) << amortMonth.principalBalance << std::endl;
         // Increasing our month counter by one
         currentLoanMonth++;
+
+        amortMonth.yearMonth++;
+        if (amortMonth.yearMonth == 13)
+        {
+            amortMonth.yearMonth = 1;
+            amortMonth.year++;
+        }
     }
 
     // Informing the user of the total amount of interest paid for this loan
