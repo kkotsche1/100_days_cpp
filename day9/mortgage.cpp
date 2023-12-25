@@ -3,6 +3,13 @@
 #include <iomanip>
 #include "globals.h"
 
+enum AmortizeProgram
+{
+    LOAN_PRINCIPAL = 1,
+    INTEREST_RATE = 2,
+    YEARS_OF_LOAN = 3,
+};
+
 int main(int argc, char *argv[])
 {
     double principal = 0.0; // When we declare our new variable we assign it some value to reduce error likelihood
@@ -26,9 +33,9 @@ int main(int argc, char *argv[])
     else
     {
         // Getting the Principal, Interest and LoanYears from Commandline Inputs
-        principal = atof(argv[1]);
-        interest = atof(argv[2]);
-        loanYears = atoi(argv[3]);
+        principal = atof(argv[LOAN_PRINCIPAL]);
+        interest = atof(argv[INTEREST_RATE]);
+        loanYears = atoi(argv[YEARS_OF_LOAN]);
     }
     // Here we are using the global denoted by the leading g which we imported from globals.h with the #include "globals.h" statement
     double monthlyInterest = interest / gMonthsInYear;
