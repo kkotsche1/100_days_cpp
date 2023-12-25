@@ -46,6 +46,7 @@ int main()
     // Looping through our payment months
     while (currentLoanMonth <= monthsOfLoan)
     {
+        gAmortizeMonth amortMonth;
 
         // Calculating the interest payment
         currInterestPayment = currBalance * monthlyInterest;
@@ -56,9 +57,15 @@ int main()
         // Subtracting principal payment from our principal balance
         currBalance = currBalance - currPrincipalPayment;
 
+        amortMonth.loanMonth = currentLoanMonth;
+        amortMonth.payment = monthlyPayment;
+        amortMonth.paidDownPrincipal = currPrincipalPayment;
+        amortMonth.principalBalance = currBalance;
+        amortMonth.pureInterest = currInterestPayment;
+
         // Informing the user over the current months payment details
-        std::cout << "Month Number: " << currentLoanMonth << "      "
-                  << "Interest Payment: " << currInterestPayment << "   Principal Payment: " << currPrincipalPayment << "   Remaining Balance: " << currBalance << std::endl;
+        std::cout << "Month Number: " << amortMonth.loanMonth << "      "
+                  << "Interest Payment: " << amortMonth.pureInterest << "   Principal Payment: " << amortMonth.paidDownPrincipal << "   Remaining Balance: " << amortMonth.principalBalance << std::endl;
         // Increasing our month counter by one
         currentLoanMonth++;
     }
