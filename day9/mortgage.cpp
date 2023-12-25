@@ -21,6 +21,7 @@ int main()
     int loanYears = 0;
     std::cin >> loanYears;
 
+    // Here we are using the global denoted by the leading g which we imported from globals.h with the #include "globals.h" statement
     double monthlyInterest = interest / gMonthsInYear;
     long monthsOfLoan = loanYears * gMonthsInYear;
 
