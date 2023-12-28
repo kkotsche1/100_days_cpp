@@ -59,7 +59,11 @@ int main()
         finalStr[finalCount++] = startStr[startCount];
     }
 
-    std::cout << finalStr << std::endl;
+    // Adding on the string end signal
+    finalStr[finalCount] = '\0';
+
+    std::cout
+        << finalStr << std::endl;
 
     return 0;
 }
