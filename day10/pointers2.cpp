@@ -4,9 +4,6 @@
 int main(int argc, const char *argv[])
 {
 
-    std::cout.setf(std::ios::hex);
-    std::cout.unsetf(std::ios::dec);
-
     int anInt = 0;
     float aFloat = 0.0;
     double aDouble = 0.0;
@@ -32,6 +29,17 @@ int main(int argc, const char *argv[])
     std::cout << "Sizeof pInt: " << sizeof(pInt) << std::endl;
     std::cout << "Sizeof pFloat: " << sizeof(pFloat) << std::endl;
     std::cout << "Sizeof pDouble: " << sizeof(pDouble) << std::endl;
+
+    // We can also create conoined variables using pointer notation
+    int aNewInt = 10;
+
+    int &aNewIntReference = aNewInt;
+
+    std::cout << aNewIntReference << std::endl;
+
+    aNewInt++;
+
+    std::cout << aNewIntReference << std::endl;
 
     return 0;
 }
