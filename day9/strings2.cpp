@@ -62,6 +62,14 @@ int main()
     // Adding on the string end signal
     finalStr[finalCount] = '\0';
 
+    // We can also create an array containing individual strings as follows:
+    char *cNames[] = {"Konstantin", "Frank", "Monika", "Helena"};
+
+    for (int i = 0; i < 4; i++)
+    {
+        std::cout << "cNames[" << i << "]: " << cNames[i] << std::endl;
+    }
+
     std::cout
         << finalStr << std::endl;
 
