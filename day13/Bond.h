@@ -10,6 +10,9 @@ public:
     // with this we enable the declaring and executing of the declared constructor function.
     Bond();
 
+    // We overload the constructor function with some variable that can be passed when instantiating an element of the Bond class
+    Bond(double, double, int, char);
+
     // Here we are declaring that this class contains a setPrincipal function which takes a touble and a getPrincipal
     // function which returns the principal value as double.
     void setPrincipal(double);

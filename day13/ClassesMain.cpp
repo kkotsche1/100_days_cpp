@@ -22,5 +22,9 @@ int main(int argc, const char *argv[])
     basicBond.setYearsToMaturity(5);
     std::cout << "Years to Maturity New: " << basicBond.getYearsToMaturity() << std::endl;
 
+    // We can also initialize classes with variables directly
+    Bond complexBond(999.9, 0.25, 15, 'S');
+
+    std::cout << "Complex Bond Principal: " << complexBond.getPrincipal() << std::endl;
     return 0;
 }
