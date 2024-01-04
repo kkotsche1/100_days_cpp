@@ -3,11 +3,13 @@
 // Including our bond header file
 #include "Bond.h"
 #include <iostream>
+#include <cmath>
 
 // We now declare the Bond initialization functionality as follows:
 Bond::Bond()
 {
-    std::cout << "I have created a default Bond :)" << std::endl;
+    // We could for example print something to the console every time a variable of type Bond gets created
+    // std::cout << "I have created a default Bond :)" << std::endl;
 
     // Setting the public variables that are associated with this class
 
@@ -35,6 +37,36 @@ double Bond::getBondPrice()
 
     // Logic to calculate the bond price
     double bondPrice = 0;
+    int scalingFactor = 0;
+
+    if (getPaymentType() == BOND_ANNUAL_TYPE)
+    {
+        scalingFactor = 1;
+    }
+    else if (getPaymentType() == BOND_SEMIANNUAL_TYPE)
+    {
+        scalingFactor = 2;
+    }
+    else if (getPaymentType() == BOND_QUARTERLY_TYPE)
+    {
+        scalingFactor = 4;
+    }
+
+    double coupon = getPrincipal() * (getCouponRate() / scalingFactor);
+
+    double periods = getYearsToMaturity() * scalingFactor;
+
+    double yield = getMarketRate() / scalingFactor;
+
+    // We will now determine the present value of all the expected bond payouts
+
+    double pvCoupons = (coupon * (1 - pow((1 + yield), -periods))) / yield;
+
+    // We now need to determine the present value of the redemption sum
+
+    double pvRedemption = getPrincipal() * pow((1 + yield), -periods);
+
+    bondPrice = pvCoupons + pvRedemption;
 
     return bondPrice;
 }
