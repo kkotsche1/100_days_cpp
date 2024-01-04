@@ -23,8 +23,11 @@ int main(int argc, const char *argv[])
     std::cout << "Years to Maturity New: " << basicBond.getYearsToMaturity() << std::endl;
 
     // We can also initialize classes with variables directly
-    Bond complexBond(999.9, 0.25, 15, 'S');
+    Bond complexBond(999.9, 0.25, 17.9, 15, 'S');
 
     std::cout << "Complex Bond Principal: " << complexBond.getPrincipal() << std::endl;
+
+    // Printing bond price
+    std::cout << "Basic Bond Price: " << basicBond.getBondPrice() << std::endl;
     return 0;
 }

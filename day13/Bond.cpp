@@ -12,19 +12,31 @@ Bond::Bond()
     // Setting the public variables that are associated with this class
 
     setPrincipal(100.0);
-    setRate(0.1);
+    setCouponRate(0.1);
     setYearsToMaturity(1);
     setPaymentType('A');
 }
 
 // We can overload the initialization function and pass some variables to it from the initialization
 // we now pass in the variable values directly upon initialization of the class object
-Bond::Bond(double princ, double rate, int yrsToMat, char pymtType)
+Bond::Bond(double princ, double coupRate, double mktRate, int yrsToMat, char pymtType)
 {
     setPrincipal(princ);
-    setRate(rate);
+    setCouponRate(coupRate);
+    setMarketRate(mktRate);
     setYearsToMaturity(yrsToMat);
     setPaymentType(pymtType);
+}
+
+// Function to calculate bond price
+
+double Bond::getBondPrice()
+{
+
+    // Logic to calculate the bond price
+    double bondPrice = 0;
+
+    return bondPrice;
 }
 
 // Defining the functions we have placed in our Bond.h file
@@ -37,13 +49,21 @@ double Bond::getPrincipal()
 {
     return principal;
 };
-void Bond::setRate(double rat)
+void Bond::setMarketRate(double rat)
 {
-    rate = rat;
+    marketRate = rat;
 };
-double Bond::getRate()
+void Bond::setCouponRate(double rat)
 {
-    return rate;
+    couponRate = rat;
+};
+double Bond::getMarketRate()
+{
+    return marketRate;
+};
+double Bond::getCouponRate()
+{
+    return couponRate;
 };
 void Bond::setYearsToMaturity(int yTM)
 {
