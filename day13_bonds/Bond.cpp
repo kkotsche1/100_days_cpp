@@ -30,6 +30,11 @@ Bond::Bond(double princ, double coupRate, double mktRate, int yrsToMat, char pym
     setPaymentType(pymtType);
 }
 
+// We can also create a deconstructor function which will run before the object is disposed from memory
+// we define this by including a tilde before the class name
+
+~Bond();
+
 // Function to calculate bond price
 
 double Bond::getBondPrice()

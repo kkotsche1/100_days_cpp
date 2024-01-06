@@ -16,6 +16,10 @@ public:
     // We overload the constructor function with some variable that can be passed when instantiating an element of the Bond class
     Bond(double, double, double, int, char);
 
+    // We can also create a deconstructor function which will run before the object is disposed from memory
+    // we define this by including a tilde before the class name
+    ~Bond();
+
     // getBondPrice() will be a function that returns a double and calculates the current price depending on maturitiy yeal
     double getBondPrice();
 
