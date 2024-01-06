@@ -39,6 +39,7 @@ double Bond::getBondPrice()
     double bondPrice = 0;
     int scalingFactor = 0;
 
+    // If else-if structure to determine the scaling factor depending on the bond type.
     if (getPaymentType() == BOND_ANNUAL_TYPE)
     {
         scalingFactor = 1;
@@ -52,20 +53,21 @@ double Bond::getBondPrice()
         scalingFactor = 4;
     }
 
+    // Calculating the coupon
     double coupon = getPrincipal() * (getCouponRate() / scalingFactor);
 
+    // Calculating the numer of interest carrying periods
     double periods = getYearsToMaturity() * scalingFactor;
 
     double yield = getMarketRate() / scalingFactor;
 
     // We will now determine the present value of all the expected bond payouts
-
     double pvCoupons = (coupon * (1 - pow((1 + yield), -periods))) / yield;
 
     // We now need to determine the present value of the redemption sum
-
     double pvRedemption = getPrincipal() * pow((1 + yield), -periods);
 
+    // The bond price is the sum of the present values of the coupons and redemption
     bondPrice = pvCoupons + pvRedemption;
 
     return bondPrice;
