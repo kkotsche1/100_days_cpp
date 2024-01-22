@@ -36,11 +36,13 @@ int main(int argc, const char *argv[])
 
     // Starting to work with inheritance, we will now create a DurationBond
 
-    DurationBond db(7000, 0.07, 0.05, 12, 'S');
+    DurationBond db(9000, 0.07, 0.05, 12, 'S');
 
     double durationBondPrice = db.getBondPrice();
+    double durationBondPrinciple = db.getPrincipal();
 
     std::cout << "durationBondPrice: " << durationBondPrice << std::endl;
+    std::cout << "durationBondPrincipal: " << durationBondPrinciple << std::endl;
 
     return 0;
 }

@@ -11,5 +11,10 @@ public:
 
     ~DurationBond();
 
+    // We will be creating a duration that is unique to the duration bond and not accessible via the standard bond
+    double getDuration();
+    void setDuration(double);
+
 private:
+    double duration;
 };
