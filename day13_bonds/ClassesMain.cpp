@@ -40,6 +40,7 @@ int main(int argc, const char *argv[])
 
     double durationBondPrice = db.getBondPrice();
     double durationBondPrinciple = db.getPrincipal();
+    double checkingBondDuration = db.calculateDuration();
 
     std::cout << "durationBondPrice: " << durationBondPrice << std::endl;
     std::cout << "durationBondPrincipal: " << durationBondPrinciple << std::endl;

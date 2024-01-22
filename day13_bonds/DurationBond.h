@@ -7,11 +7,14 @@ class DurationBond : public Bond
 {
 
 public:
+    const double DURATION_BOND_RATE_CHANGE = 0.005;
+
     DurationBond(double, double, double, double, char);
 
     ~DurationBond();
 
     // We will be creating a duration that is unique to the duration bond and not accessible via the standard bond
+    double calculateDuration();
     double getDuration();
     void setDuration(double);
 

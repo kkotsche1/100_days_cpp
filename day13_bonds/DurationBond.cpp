@@ -30,3 +30,33 @@ void DurationBond::setDuration(double dur)
 {
     duration = dur;
 }
+
+double DurationBond::calculateDuration()
+{
+    // Get the current YTM of the bond
+    double origMarketRate = getMarketRate();
+
+    // Shock Interest rate factor is 'Y'm and its'
+    // a difference between rates which we call delta
+
+    double deltaY = DURATION_BOND_RATE_CHANGE;
+
+    if (origMarketRate <= DURATION_BOND_RATE_CHANGE)
+    {
+        deltaY = origMarketRate - 0.0001;
+    }
+
+    // v1 is the CURRENT bond price
+    double v1 = getBondPrice();
+
+    // Shock the interest rate down by deltaY
+    double bipsLower = origMarketRate - deltaY;
+
+    // We will now set the market rate to the shocked rate
+    setMarketRate(bipsLower);
+
+    // We can now check the new bond price after shocking down the interest rate
+    double v2 = getBondPrice();
+
+    std::cout << "v1: " << v1 << "    v2: " << v2 << std::endl;
+}
