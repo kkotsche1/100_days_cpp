@@ -2,6 +2,7 @@
 
 // Including our Bond Header File
 #include "Bond.h"
+#include "DurationBond.h"
 
 int main(int argc, const char *argv[])
 {

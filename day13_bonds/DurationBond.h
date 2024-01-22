@@ -12,4 +12,4 @@ public:
     ~DurationBond();
 
 private:
-}
+};
