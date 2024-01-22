@@ -30,10 +30,12 @@ Bond::Bond(double princ, double coupRate, double mktRate, int yrsToMat, char pym
     setPaymentType(pymtType);
 }
 
-// We can also create a deconstructor function which will run before the object is disposed from memory
-// we define this by including a tilde before the class name
+// We declare a deconstructor function here:
 
-~Bond();
+Bond::~Bond()
+{
+    std::cout << "Bond is being destroyed" << std::endl;
+}
 
 // Function to calculate bond price
 

@@ -33,5 +33,13 @@ int main(int argc, const char *argv[])
     // Printing that calculate bond price
     std::cout << complexBond.getBondPrice() << std::endl;
 
+    // Starting to work with inheritance, we will now create a DurationBond
+
+    DurationBond db(7000, 0.07, 0.05, 12, 'S');
+
+    double durationBondPrice = db.getBondPrice();
+
+    std::cout << "durationBondPrice: " << durationBondPrice << std::endl;
+
     return 0;
 }
