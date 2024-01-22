@@ -20,3 +20,13 @@ DurationBond::~DurationBond()
 {
     std::cout << "In the deconstructor of durationbond" << std::endl;
 }
+
+double DurationBond::getDuration()
+{
+    return duration;
+}
+
+void DurationBond::setDuration(double dur)
+{
+    duration = dur;
+}
