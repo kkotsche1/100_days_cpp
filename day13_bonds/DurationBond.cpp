@@ -58,5 +58,19 @@ double DurationBond::calculateDuration()
     // We can now check the new bond price after shocking down the interest rate
     double v2 = getBondPrice();
 
-    std::cout << "v1: " << v1 << "    v2: " << v2 << std::endl;
+    // Shocking interest rate up by deltaY
+    double bipsHigher = origMarketRate + deltaY;
+
+    // Setting Market Rate to the shocked up interest rate
+    setMarketRate(bipsHigher);
+
+    // Checking the bond price after shocking interest rates up
+    double v3 = getBondPrice();
+
+    // Calculating Bond duration
+    // Duration = v2 - v3 / 2(V1)(DeltaY)
+
+    double calcDuration = (v2 - v3) / (2 * v1 * deltaY);
+
+    return calcDuration;
 }
