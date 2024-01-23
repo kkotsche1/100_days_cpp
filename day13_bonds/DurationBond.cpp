@@ -69,7 +69,6 @@ double DurationBond::calculateDuration()
 
     // Calculating Bond duration
     // Duration = v2 - v3 / 2(V1)(DeltaY)
-
     double calcDuration = (v2 - v3) / (2 * v1 * deltaY);
 
     return calcDuration;
