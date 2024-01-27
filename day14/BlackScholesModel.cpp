@@ -1,6 +1,8 @@
 #include <iostream>
-#include "BSM.h"
-#include <random>
+// #include "BSM.h"
+#include <stdio.h>  /* printf, scanf, puts, NULL */
+#include <stdlib.h> /* srand, rand */
+#include <time.h>   /* time */
 
 enum BSMExecution
 {
@@ -13,17 +15,18 @@ enum BSMExecution
     SIMULATIONS = 7
 };
 
+// Function to generate a random number between min and max (inclusive)
 int getRandomNumber(int min, int max)
 {
-    // Create a random device and use it to seed a Mersenne Twister engine
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    // Ensure the function works even if min is greater than max
+    if (min > max)
+    {
+        std::swap(min, max);
+    }
 
-    // Define the range for the distribution
-    std::uniform_int_distribution<> distrib(min, max);
-
-    // Generate and return the random number
-    return distrib(gen);
+    // rand() % (max - min + 1) generates a value in the range [0, max - min]
+    // Adding min shifts the range to [min, max]
+    return min + rand() % (max - min + 1);
 }
 
 // argv[0] is the name of the program
@@ -31,6 +34,9 @@ int getRandomNumber(int min, int max)
 
 int main(int argc, const char *argv[])
 {
+
+    srand(time(NULL)); // Initializing random number generator with a unique seed
+
     BSM bsm(
         atof(argv[ASSET_PRICE]),  // turning the first position item from string to double
         atof(argv[STRIKE_PRICE]), // Srike price of our options
