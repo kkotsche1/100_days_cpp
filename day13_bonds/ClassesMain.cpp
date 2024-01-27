@@ -38,12 +38,15 @@ int main(int argc, const char *argv[])
 
     DurationBond db(9000, 0.07, 0.05, 12, 'S');
 
+    // We can now access both the inherited and also custom functions associated with our bond class
     double durationBondPrice = db.getBondPrice();
     double durationBondPrinciple = db.getPrincipal();
     double checkingBondDuration = db.calculateDuration();
 
+    // and print out the results to ensure everything is working well
     std::cout << "durationBondPrice: " << durationBondPrice << std::endl;
     std::cout << "durationBondPrincipal: " << durationBondPrinciple << std::endl;
+    std::cout << "durationBondDuration: " << checkingBondDuration << std::endl;
 
     return 0;
 }
