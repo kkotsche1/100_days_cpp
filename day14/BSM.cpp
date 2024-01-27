@@ -39,3 +39,44 @@ void BSM::setBsmMonteCarloSims(long montsims)
 {
     bsmMonteCarloSims = montsims;
 };
+
+BSM::~BSM() {}
+
+void BSM::logNormalRandomWalk(){
+
+};
+
+float BSM::getBsmAssetPrice()
+{
+    return bsmAssetPrice;
+};
+
+float BSM::getBsmGrowth()
+{
+    return bsmMarketGrowth;
+};
+
+long BSM::getBsmMonteCarloSims()
+{
+    return bsmMonteCarloSims;
+};
+
+long BSM::getBsmSteps()
+{
+    return bsmSteps;
+};
+
+float BSM::getBsmStrikePrice()
+{
+    return bsmStrikePrice;
+};
+
+float BSM::getBsmVolatility()
+{
+    return bsmAssetVol;
+};
+
+float BSM::getBsmYears()
+{
+    return bsmYrsToExpiry;
+}
