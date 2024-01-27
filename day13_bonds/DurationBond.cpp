@@ -14,6 +14,15 @@ DurationBond::DurationBond(double prin,
 {
 
     std::cout << "In The durationBond Constructor" << std::endl;
+
+    // We now want to calculate the duration of the duration bond as soon as it is constructed
+    // hence we execute the necessary code for this in the constructor
+
+    // we could dirrectly assing the calculateDuration result to duration, but this is not best practice
+    // duration = calculateDuration();
+
+    // The proper implementation is here.
+    setDuration(calculateDuration());
 }
 
 DurationBond::~DurationBond()
@@ -66,6 +75,11 @@ double DurationBond::calculateDuration()
 
     // Checking the bond price after shocking interest rates up
     double v3 = getBondPrice();
+
+    // We now have to set the market rate of our bond back to the initial market rate after we have
+    // completed our calculations
+
+    setMarketRate(origMarketRate);
 
     // Calculating Bond duration
     // Duration = v2 - v3 / 2(V1)(DeltaY)
