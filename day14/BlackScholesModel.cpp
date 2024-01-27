@@ -42,12 +42,12 @@ int main(int argc, const char *argv[])
               << "NUMBER OF SIMULATIONS: " << bsm.getBsmMonteCarloSims() << std::endl;
 
     // Running the simulations
-    // bsm.logNormalRandomWalk();
+    bsm.logNormalRandomWalk();
 
     // Printing out our simulation results
-    std::cout << std::endl; // printing empty lines
-    std::cout << "CALL OPTION PRICE: " << bsm.getCallPrice() << std::endl;
-    std::cout << "PUT OPTION PRICE: " << bsm.getPutPrice() << std::endl;
+    // std::cout << std::endl; // printing empty lines
+    // std::cout << "CALL OPTION PRICE: " << bsm.getCallPrice() << std::endl;
+    // std::cout << "PUT OPTION PRICE: " << bsm.getPutPrice() << std::endl;
 
     return 0;
 };

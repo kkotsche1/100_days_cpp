@@ -2,6 +2,7 @@
 #include <stdio.h>  /* printf, scanf, puts, NULL */
 #include <stdlib.h> /* srand, rand */
 #include <time.h>   /* time */
+#include <math.h>
 
 BSM::BSM(
     float assPrc,
@@ -19,29 +20,40 @@ BSM::BSM(
     setBsmYears(yrs);
     setBsmSteps(stps);
     setBsmMonteCarloSims(monsims);
-    srand(time(NULL)); // Initializing random number generator with a unique seed
 };
 
 // Function to generate a random number between min and max (inclusive)
-double BSM::rn(int min, int max)
+double BSM::rn()
 {
-    // Ensure the function works even if min is greater than max
-    if (min > max)
+    return (double)rand() / (double)(RAND_MAX + 1.0);
+};
+
+BSM::~BSM(){};
+
+void BSM::logNormalRandomWalk()
+{
+    srand((unsigned)time(0)); // Initializing random number generator with a unique seed
+
+    double callPayoffPot = 0;
+    double putPayoffPot = 0;
+
+    // Determining Timesteps
+    double timeStep = getBsmYears() / getBsmSteps();
+    double sqrtTimeStep = sqrt(timeStep);
+
+    // Outer loop for number of simulations
+    for (long i = 1; i <= getBsmMonteCarloSims(); i++)
     {
-        std::swap(min, max);
+
+        double assPrice = getBsmAssetPrice();
+
+        // Inner loop for steps
+        for (int j = 1; j <= getBsmSteps(); j++)
+        {
+            assPrice = assPrice * (1 + getBsmGrowth() * timeStep + getBsmVolatility() * sqrtTimeStep * (rn() + rn() + rn() + rn() + rn() + rn() + rn() + rn() + rn() + rn() + rn() + rn() - 6)); // We approximate phi
+        };
+        std::cout << assPrice << std::endl;
     }
-
-    // rand() % (max - min + 1) generates a value in the range [0, max - min]
-    // Adding min shifts the range to [min, max]
-    return static_cast<double>(min + rand() % (max - min + 1));
-}
-
-BSM::~BSM()
-{
-}
-
-void BSM::logNormalRandomWalk(){
-
 };
 
 double BSM::getCallPrice()
