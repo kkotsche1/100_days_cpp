@@ -4,14 +4,21 @@
 #include <time.h>   /* time */
 
 BSM::BSM(
-    float AssetPrice,
-    float StrikePrice,
-    float Growth,
-    float Volatility,
-    float Years,
-    long Steps,
-    long MonteCarolSims)
+    float assPrc,
+    float strPrc,
+    float gth,
+    float vola,
+    float yrs,
+    long stps,
+    long monsims)
 {
+    setBsmAssetPrice(assPrc);
+    setBsmStrikePrice(strPrc);
+    setBsmGrowth(gth);
+    setBsmVolatility(vola);
+    setBsmYears(yrs);
+    setBsmSteps(stps);
+    setBsmMonteCarloSims(monsims);
     srand(time(NULL)); // Initializing random number generator with a unique seed
 };
 
@@ -36,6 +43,16 @@ BSM::~BSM()
 void BSM::logNormalRandomWalk(){
 
 };
+
+double BSM::getCallPrice()
+{
+    return 0;
+}
+
+double BSM::getPutPrice()
+{
+    return 10;
+}
 
 float BSM::getBsmAssetPrice()
 {

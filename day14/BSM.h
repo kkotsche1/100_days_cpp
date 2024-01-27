@@ -27,8 +27,6 @@ public:
     double getCallPrice();
     double getPutPrice();
 
-    double mimicRandomNumber();
-
     double rn(int, int); // Function to generate random number
 
     ~BSM();

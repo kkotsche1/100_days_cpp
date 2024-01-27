@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
               << "NUMBER OF SIMULATIONS: " << bsm.getBsmMonteCarloSims() << std::endl;
 
     // Running the simulations
-    bsm.logNormalRandomWalk();
+    // bsm.logNormalRandomWalk();
 
     // Printing out our simulation results
     std::cout << std::endl; // printing empty lines
