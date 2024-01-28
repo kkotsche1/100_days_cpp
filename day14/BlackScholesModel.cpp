@@ -33,13 +33,13 @@ int main(int argc, const char *argv[])
         atol(argv[SIMULATIONS])); // more simulations = more accurate, but slower
 
     // Let us print out the attributes to ensure everything worked out
-    std::cout << "ASSET PRICE: " << bsm.getBsmAssetPrice() << std::endl
-              << "STRIKE PRICE: " << bsm.getBsmStrikePrice() << std::endl
-              << "MARKET GROWTH: " << bsm.getBsmGrowth() << std::endl
-              << "ASSET VOLATILITY: " << bsm.getBsmVolatility() << std::endl
-              << "YEARS TO EXPIRY: " << bsm.getBsmYears() << std::endl
-              << "STEPS TO TAKE: " << bsm.getBsmSteps() << std::endl
-              << "NUMBER OF SIMULATIONS: " << bsm.getBsmMonteCarloSims() << std::endl;
+    // std::cout << "ASSET PRICE: " << bsm.getBsmAssetPrice() << std::endl
+    //           << "STRIKE PRICE: " << bsm.getBsmStrikePrice() << std::endl
+    //           << "MARKET GROWTH: " << bsm.getBsmGrowth() << std::endl
+    //           << "ASSET VOLATILITY: " << bsm.getBsmVolatility() << std::endl
+    //           << "YEARS TO EXPIRY: " << bsm.getBsmYears() << std::endl
+    //           << "STEPS TO TAKE: " << bsm.getBsmSteps() << std::endl
+    //           << "NUMBER OF SIMULATIONS: " << bsm.getBsmMonteCarloSims() << std::endl;
 
     // Running the simulations
     bsm.logNormalRandomWalk();
